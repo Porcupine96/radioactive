@@ -11,7 +11,6 @@ public class MemoryCard {
     public MemoryCard(List<Song> songList) {
         this.songList = songList;
         this.currentSong = 0;
-
     }
 
     public List<Song> getSongList() {
@@ -29,7 +28,6 @@ public class MemoryCard {
             currentSong = 0;
             System.out.print("Playing CD was reversed");
         }
-
-
     }
+
 }

@@ -1,114 +1,105 @@
 package pl.edu.agh.radioactive;
+
 public class Boombox {
 
-    private boolean power;
+    private boolean isPowerOn;
     private Mode mode;
     private Radio radio;
     private CD disc;
     private Tape tape;
     private MemoryCard memoryCard;
 
-
-    public Boombox()
-    {
-        power = false;
+    public Boombox() {
+        // TODO: mode should not be null
+        isPowerOn = false;
+        radio = new Radio();
         disc = null;
         tape = null;
-        radio = new Radio();
         memoryCard = null;
     }
 
-    public void on()
-    {
-        if(power)
-            System.out.print("Error - Radio is already turned on.");
+    public void on() {
+        if (isPowerOn)
+            System.out.println("Error - Radio is already turned on.");
         else {
-            System.out.print("Boombox is on.\n");
+            System.out.println("Boombox is on.");
             mode = Mode.Wait;
-            power = true;
+            isPowerOn = true;
         }
     }
 
-    public void off()
-    {
-        if(!power)
-            System.out.print("Error - Radio is already turned off.");
+    public void off() {
+        if (!isPowerOn)
+            System.out.println("Error - Radio is already turned off.");
         else {
-            power = false;
-            System.out.print("Power is off.");
+            isPowerOn = false;
+            System.out.println("Power is off.");
         }
     }
 
-    public void startPlayingCD(CD d)
-    {
-        if(!power){
-            System.out.print("Power is off. I can't play CD.");
-            return;
+    public void startPlayingCD(CD disc) {
+        if (isPowerOn) {
+            this.mode = Mode.CD;
+            this.disc = disc;
+            playCurrentSong();
+        } else {
+            System.out.println("Power is off. I can't play CD.");
         }
-
-        mode = Mode.CD;
-        disc = d;
-        playCurrentSong();
     }
 
-    public void stopPlayingCD()
-    {
-        if(!power){
-            System.out.print("Power is off.");
-        }else if(mode != Mode.CD) {
-            System.out.print("Error - wrong mode");
+    public void stopPlayingCD() {
+        if (!isPowerOn) {
+            System.out.println("Power is off.");
+        } else if (mode != Mode.CD) {
+            System.out.println("Error - wrong mode");
             printCurrentPlayed();
-        }
-        else {
-            System.out.print("Playing CD was stopped.");
+        } else {
+            System.out.println("Playing CD was stopped.");
             mode = Mode.Wait;
         }
     }
 
-
-    public void nextSong()
-    {
-        if(mode != Mode.CD || !power) {
-            System.out.print("Error - You need to change to CD mode");
+    public void nextSong() {
+        if (mode != Mode.CD || !isPowerOn) {
+            System.out.println("Error - You need to change to CD mode.");
             printCurrentPlayed();
-        }
-        else{
+        } else if (disc == null) {
+            System.out.println("Error - Please insert a CD to play.");
+        } else {
             disc.nextSong();
             playCurrentSong();
         }
     }
 
     private void playCurrentSong() {
-        System.out.print("CD title: " + disc.getTitle()+ "\n");
-        System.out.print("Song title: " + disc.getCurrentSong() + "\n\n");
+        System.out.println("CD title: " + disc.getTitle());
+        System.out.println("Song title: " + disc.getCurrentSong());
     }
 
-    public void playMemoryCard(MemoryCard givenCard)
-    {
-        if(!power){
-            System.out.print("Power is off. I can't play music from memory card.");
-        }else {
-            if(memoryCard == null && givenCard == null ){
-                System.out.print("I have no tape to play from.");
+    public void playMemoryCard(MemoryCard givenCard) {
+        if (!isPowerOn) {
+            System.out.println("Power is off. I can't play music from memory card.");
+        } else {
+            if (memoryCard == null && givenCard == null) {
+                System.out.println("I have no tape to play from.");
                 return;
-            }else if(givenCard != null){
+            } else if (givenCard != null) {
                 memoryCard = givenCard;
             }
             mode = Mode.MemoryCard;
-            System.out.print("Reading memory card \n");
-            System.out.print("Played song: " + memoryCard.getCurrentSong() + "\n\n");
+            System.out.println("Reading memory card");
+            System.out.println("Played song: " + memoryCard.getCurrentSong());
         }
     }
 
-    public void playTape(Tape givenTape)
-    {
-        if(!power) {
-            System.out.print("Power is off. I can't play tape");
-        }else {
-            if(tape == null && givenTape == null){
-                System.out.print("There is no tape to play.");
+    public void playTape(Tape givenTape) {
+        if (!isPowerOn) {
+            System.out.println("Power is off. I can't play tape");
+        } else {
+            if (tape == null && givenTape == null) {
+                System.out.println("There is no tape to play.");
                 return;
-            }else if(givenTape!= null) {
+            } else if (givenTape != null) {
                 tape = givenTape;
             }
             mode = Mode.Tape;
@@ -117,53 +108,51 @@ public class Boombox {
     }
 
     private void playTapeSide(TapeSide side) {
-        System.out.print("I am playing music from tape named:" + tape.getTitle() + "\n\n");
-        if(side == TapeSide.LEFT){
-            System.out.print("I am playing songs " + tape.getSongsLeft().getName() + "\n\n");
-        }else
-            System.out.print("I am playing songs " + tape.getSongsRight().getName() + "\n\n");
+        System.out.println("I am playing music from tape named: " + tape.getTitle());
+        if (side == TapeSide.LEFT) {
+            System.out.println("I am playing songs " + tape.getSongsLeft().getName());
+        } else
+            System.out.println("I am playing songs " + tape.getSongsRight().getName());
     }
 
-    public void playRadio()
-    {
-        if(!power){
-            System.out.print("Power is off. I can't play Radio.");
-        }else {
+    public void playRadio() {
+        if (!isPowerOn) {
+            System.out.println("Power is off. I can't play Radio.");
+        } else {
             mode = Mode.Radio;
-            System.out.print("Playing the radio");
-            System.out.print("Station: " + radio.getRadioProgram());
+            System.out.println("Playing the radio");
+            System.out.println("Station: " + radio.getRadioProgram());
         }
     }
 
     private void printCurrentPlayed() {
-        System.out.print("I am playing mode" + mode + "\n");
+        System.out.println("I am playing mode" + mode);
     }
 
 
-    public void changeRadioProgram(int nr){
-        if(mode != Mode.Radio) {
-            System.out.print("Error - Radio is not in radio mode.");
+    public void changeRadioProgram(int nr) {
+        if (mode != Mode.Radio) {
+            System.out.println("Error - Radio is not in radio mode.");
             printCurrentPlayed();
-        }
-        else {
+        } else {
             radio.changeProgram(nr);
-            System.out.print("Radio station was changed." + radio.getRadioProgram());
+            System.out.println("Radio station was changed." + radio.getRadioProgram());
         }
     }
 
-    public void pause(){
+    public void pause() {
         mode = Mode.Wait;
-        System.out.print("Pause...");
+        System.out.println("Pause...");
     }
 
-    public void changeSide(){
-        if(mode != Mode.Tape) {
-            System.out.print("Error - Radio is not in tape mode.");
+    public void changeSide() {
+        if (mode != Mode.Tape) {
+            System.out.println("Error - Radio is not in tape mode.");
             printCurrentPlayed();
-        }
-        else {
+        } else {
             tape.changeSide();
-            System.out.print("Tape side was changed.");
+            System.out.println("Tape side was changed.");
         }
     }
+
 }

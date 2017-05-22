@@ -6,8 +6,7 @@ public class Song {
     private String name;
     private String author;
 
-    public Song(String name, String author)
-    {
+    public Song(String name, String author) {
         this.name = name;
         this.author = author;
     }
