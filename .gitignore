@@ -4,6 +4,7 @@ gen/
 
 # Intellij project files
 .idea/
+*.iml
 
 #Gradle
 .gradletasknamecache
