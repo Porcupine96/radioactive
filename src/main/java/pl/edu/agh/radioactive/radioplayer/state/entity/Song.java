@@ -1,4 +1,4 @@
-package pl.edu.agh.radioactive;
+package pl.edu.agh.radioactive.radioplayer.state.entity;
 
 
 public class Song {
@@ -16,7 +16,6 @@ public class Song {
     }
 
     public String getAuthor() {
-
         return author;
     }
 

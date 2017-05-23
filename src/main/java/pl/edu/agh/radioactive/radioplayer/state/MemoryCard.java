@@ -1,10 +1,11 @@
-package pl.edu.agh.radioactive;
+package pl.edu.agh.radioactive.radioplayer.state;
+
+import pl.edu.agh.radioactive.radioplayer.state.entity.Song;
 
 import java.util.List;
 
 public class MemoryCard {
 
-    //todo -> now the same as CD
     private List<Song> songList;
     private int currentSong;
 

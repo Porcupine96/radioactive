@@ -1,4 +1,7 @@
-package pl.edu.agh.radioactive;
+package pl.edu.agh.radioactive.radioplayer.state;//package pl.edu.agh.radioactive;
+
+import pl.edu.agh.radioactive.radioplayer.state.entity.Song;
+import pl.edu.agh.radioactive.radioplayer.state.entity.TapeSide;
 
 public class Tape {
 

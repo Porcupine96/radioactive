@@ -1,4 +1,6 @@
-package pl.edu.agh.radioactive;
+package pl.edu.agh.radioactive.radioplayer.state;
+
+import pl.edu.agh.radioactive.radioplayer.state.entity.Song;
 
 import java.util.List;
 
@@ -14,6 +16,10 @@ public class CD {
         currentSong = 0;
     }
 
+    public void nextSong() {
+        currentSong = (currentSong + 1) % songList.size();
+    }
+
     public String getTitle() {
         return title;
     }
@@ -23,16 +29,7 @@ public class CD {
     }
 
     public String getCurrentSong() {
-        return songList.get(currentSong).getName() + "  " + songList.get(currentSong).getAuthor();
-    }
-
-    public void nextSong() {
-        if (currentSong + 1 < songList.size())
-            currentSong++;
-        else {
-            currentSong = 0;
-            System.out.print("Playing CD was reversed");
-        }
+        return songList.get(currentSong).getName() + " by " + songList.get(currentSong).getAuthor();
     }
 
 }
