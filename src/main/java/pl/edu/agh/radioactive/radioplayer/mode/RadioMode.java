@@ -2,28 +2,29 @@ package pl.edu.agh.radioactive.radioplayer.mode;
 
 import pl.edu.agh.radioactive.radioplayer.PlayerMode;
 import pl.edu.agh.radioactive.radioplayer.PlayerState;
+import pl.edu.agh.radioactive.radioplayer.mode.modetype.ModeType;
 
 public class RadioMode extends PlayerMode {
 
-    private double frequency;
-
     public RadioMode() {
-        frequency = 96.7;
+        super(ModeType.RADIO);
     }
-
-
 
     @Override
     public void play(PlayerState state) {
-        // TODO: implement
+        withStateValidation(state, () -> playCurrentStation(state.getRadioFrequency()));
     }
 
-    public double getFrequency() {
-        return frequency;
+    private void withStateValidation(PlayerState state, Runnable action) {
+        if (!state.isPowerOn()) {
+            System.out.println("[ERROR] cannot play - radio player turned off.");
+        } else {
+            action.run();
+        }
     }
 
-    public void setFrequency(double frequency) {
-        this.frequency = frequency;
+    private void playCurrentStation(double frequency) {
+        System.out.println("[INFO] playing radio station " + frequency + ".");
     }
 
 }

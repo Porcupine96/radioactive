@@ -14,10 +14,12 @@ public class PlayerState {
     private CD cd;
     private MemoryCard memoryCard;
     private Tape tape;
+    private double radioFrequency;
 
     public PlayerState() {
         this.isPowerOn = false;
         this.isInWaitingMode = true;
+        this.radioFrequency = 96.7;
     }
 
     public boolean isPowerOn() {
@@ -48,6 +50,10 @@ public class PlayerState {
         this.isInWaitingMode = waitingMode;
     }
 
+    public void setRadioFrequency(double radioFrequency) {
+        this.radioFrequency = radioFrequency;
+    }
+
     public Optional<CD> getCd() {
         return Optional.ofNullable(cd);
     }
@@ -60,5 +66,8 @@ public class PlayerState {
         return Optional.ofNullable(tape);
     }
 
+    public double getRadioFrequency() {
+        return radioFrequency;
+    }
 
 }

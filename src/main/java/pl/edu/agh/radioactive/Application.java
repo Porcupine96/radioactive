@@ -14,7 +14,9 @@ public class Application {
         radioPlayer.turnOn();
         radioPlayer.insertCD(new CD("divide", Collections.singletonList(new Song("Galway girl", "Ed Sheeran"))));
         radioPlayer.playCD();
+        radioPlayer.playRadio();
 
+        radioPlayer.changeRadioStation(123.1);
     }
 
 }

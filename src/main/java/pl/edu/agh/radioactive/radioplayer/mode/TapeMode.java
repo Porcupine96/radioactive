@@ -2,9 +2,14 @@ package pl.edu.agh.radioactive.radioplayer.mode;
 
 import pl.edu.agh.radioactive.radioplayer.PlayerMode;
 import pl.edu.agh.radioactive.radioplayer.PlayerState;
+import pl.edu.agh.radioactive.radioplayer.mode.modetype.ModeType;
 import pl.edu.agh.radioactive.radioplayer.state.Tape;
 
 public class TapeMode extends PlayerMode {
+
+    public TapeMode() {
+        super(ModeType.TAPE);
+    }
 
     private void withStateValidation(PlayerState state, Runnable action) {
         if (!state.isPowerOn()) {
