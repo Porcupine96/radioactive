@@ -23,8 +23,8 @@ public class RadioPlayer {
         if (state.isPowerOn())
             System.out.println("[ERROR] radio is already turned on.");
         else {
-            System.out.println("[INFO] radio player turned on.");
             state.setPowerOn(true);
+            System.out.println("[INFO] radio player turned on.");
         }
     }
 
@@ -86,6 +86,14 @@ public class RadioPlayer {
 
     public void stopTape() {
         stop(ModeType.TAPE);
+    }
+
+    public void goToTheNextSong() {
+        if (this.mode.modeType == ModeType.CD) {
+            ((CDMode) mode).nextSong(state);
+        } else {
+            System.out.println("[INFO] cannot go to the next song in mode " + this.mode.modeType + ".");
+        }
     }
 
     public void changeRadioStation(double frequency) {
