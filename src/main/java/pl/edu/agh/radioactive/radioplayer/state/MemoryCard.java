@@ -6,10 +6,12 @@ import java.util.List;
 
 public class MemoryCard {
 
+    private final String cardName;
     private List<Song> songList;
     private int currentSong;
 
-    public MemoryCard(List<Song> songList) {
+    public MemoryCard(String cardName, List<Song> songList) {
+        this.cardName = cardName;
         this.songList = songList;
         this.currentSong = 0;
     }
@@ -18,17 +20,12 @@ public class MemoryCard {
         return songList;
     }
 
-    public String getCurrentSong() {
-        return songList.get(currentSong).getName() + "  " + songList.get(currentSong).getAuthor();
+    public Song getCurrentSong() {
+        return songList.get(currentSong);
     }
 
-    public void nextSong() {
-        if (currentSong + 1 < songList.size())
-            currentSong++;
-        else {
-            currentSong = 0;
-            System.out.print("Playing CD was reversed");
-        }
+    public String getCardName() {
+        return cardName;
     }
 
 }

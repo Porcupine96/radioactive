@@ -28,8 +28,8 @@ public class CD {
         return songList;
     }
 
-    public String getCurrentSong() {
-        return songList.get(currentSong).getName() + " by " + songList.get(currentSong).getAuthor();
+    public Song getCurrentSong() {
+        return songList.get(currentSong);
     }
 
 }

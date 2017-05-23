@@ -19,4 +19,9 @@ public class Song {
         return author;
     }
 
+    @Override
+    public String toString() {
+        return name + " by " + author;
+    }
+
 }

@@ -36,6 +36,10 @@ public class PlayerState {
         this.memoryCard = memoryCard;
     }
 
+    public void insertTape(Tape tape) {
+        this.tape = tape;
+    }
+
     public boolean isInWaitingMode() {
         return isInWaitingMode;
     }
@@ -55,5 +59,6 @@ public class PlayerState {
     public Optional<Tape> getTape() {
         return Optional.ofNullable(tape);
     }
+
 
 }

@@ -1,32 +1,19 @@
 package pl.edu.agh.radioactive.radioplayer.state;//package pl.edu.agh.radioactive;
 
-import pl.edu.agh.radioactive.radioplayer.state.entity.Song;
 import pl.edu.agh.radioactive.radioplayer.state.entity.TapeSide;
 
 public class Tape {
 
     private String title;
     private TapeSide side;
-    private Song songsLeft;
-    private Song songsRight;
 
-    public Tape(String title, Song songsLeft, Song songListRight, TapeSide side) {
+    public Tape(String title, TapeSide side) {
         this.title = title;
-        this.songsLeft = songsLeft;
-        this.songsRight = songListRight;
         this.side = side;
     }
 
     public TapeSide getSide() {
         return side;
-    }
-
-    public Song getSongsLeft() {
-        return songsLeft;
-    }
-
-    public Song getSongsRight() {
-        return songsRight;
     }
 
     public String getTitle() {
