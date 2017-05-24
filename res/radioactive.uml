@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>pl.edu.agh.radioactive</OriginalElement>
+  <nodes>
+    <node x="1365.0" y="395.0">pl.edu.agh.radioactive.radioplayer.PlayerState</node>
+    <node x="953.0" y="523.0">pl.edu.agh.radioactive.radioplayer.mode.TapeMode</node>
+    <node x="1706.7729166666668" y="0.0">pl.edu.agh.radioactive.radioplayer.state.entity.Song</node>
+    <node x="0.0" y="523.0">pl.edu.agh.radioactive.radioplayer.mode.RadioMode</node>
+    <node x="1203.9604166666668" y="24.0">pl.edu.agh.radioactive.radioplayer.state.entity.TapeSide</node>
+    <node x="1763.3333333333335" y="174.0">pl.edu.agh.radioactive.radioplayer.state.CD</node>
+    <node x="1124.4604166666668" y="197.5">pl.edu.agh.radioactive.radioplayer.state.Tape</node>
+    <node x="872.7729166666667" y="823.0">pl.edu.agh.radioactive.radioplayer.RadioPlayer</node>
+    <node x="405.5" y="175.5">pl.edu.agh.radioactive.radioplayer.PlayerMode</node>
+    <node x="1508.3333333333335" y="186.0">pl.edu.agh.radioactive.radioplayer.state.MemoryCard</node>
+    <node x="561.0" y="534.5">pl.edu.agh.radioactive.radioplayer.mode.MemoryCardMode</node>
+    <node x="1226.1479166666668" y="1204.0">pl.edu.agh.radioactive.Application</node>
+    <node x="270.0" y="511.5">pl.edu.agh.radioactive.radioplayer.mode.CDMode</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="pl.edu.agh.radioactive.radioplayer.RadioPlayer" target="pl.edu.agh.radioactive.radioplayer.PlayerMode">
+      <point x="-50.5" y="-165.5" />
+      <point x="1024.2729166666668" y="793.0" />
+      <point x="550.5" y="793.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.PlayerState" target="pl.edu.agh.radioactive.radioplayer.state.CD">
+      <point x="127.33333333333326" y="-189.0" />
+      <point x="1683.3333333333333" y="375.0" />
+      <point x="1827.0833333333335" y="375.0" />
+      <point x="-63.75" y="85.5" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.mode.TapeMode" target="pl.edu.agh.radioactive.radioplayer.PlayerMode">
+      <point x="0.0" y="-61.0" />
+      <point x="1149.0" y="365.0" />
+      <point x="666.5" y="365.0" />
+      <point x="116.0" y="84.0" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.state.Tape" target="pl.edu.agh.radioactive.radioplayer.state.entity.TapeSide">
+      <point x="0.0" y="-62.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.Application" target="pl.edu.agh.radioactive.radioplayer.state.entity.Song">
+      <point x="64.5" y="-26.5" />
+      <point x="1376.6479166666668" y="1184.0" />
+      <point x="2028.8333333333335" y="1184.0" />
+      <point x="2028.8333333333335" y="149.0" />
+      <point x="1906.7729166666668" y="149.0" />
+      <point x="80.0" y="62.0" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.mode.RadioMode" target="pl.edu.agh.radioactive.radioplayer.PlayerMode">
+      <point x="0.0" y="-61.0" />
+      <point x="125.0" y="365.0" />
+      <point x="434.5" y="365.0" />
+      <point x="-116.0" y="84.0" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.state.CD" target="pl.edu.agh.radioactive.radioplayer.state.entity.Song">
+      <point x="0.0" y="-85.5" />
+      <point x="1890.8333333333335" y="149.0" />
+      <point x="1826.7729166666668" y="149.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.Application" target="pl.edu.agh.radioactive.radioplayer.RadioPlayer">
+      <point x="-21.5" y="-26.5" />
+      <point x="1290.6479166666668" y="1174.0" />
+      <point x="1074.7729166666668" y="1174.0" />
+      <point x="0.0" y="165.5" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.RadioPlayer" target="pl.edu.agh.radioactive.radioplayer.PlayerState">
+      <point x="151.5" y="-165.5" />
+      <point x="1226.2729166666668" y="803.0" />
+      <point x="1651.5" y="803.0" />
+      <point x="95.5" y="189.0" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.PlayerState" target="pl.edu.agh.radioactive.radioplayer.state.Tape">
+      <point x="-127.33333333333326" y="-189.0" />
+      <point x="1428.6666666666667" y="375.0" />
+      <point x="1253.9604166666668" y="375.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.mode.MemoryCardMode" target="pl.edu.agh.radioactive.radioplayer.PlayerMode">
+      <point x="0.0" y="-49.5" />
+      <point x="747.0" y="375.0" />
+      <point x="608.5" y="375.0" />
+      <point x="58.0" y="84.0" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.Application" target="pl.edu.agh.radioactive.radioplayer.state.CD">
+      <point x="21.5" y="-26.5" />
+      <point x="1333.6479166666668" y="1174.0" />
+      <point x="1954.5833333333335" y="1174.0" />
+      <point x="63.75" y="85.5" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.state.MemoryCard" target="pl.edu.agh.radioactive.radioplayer.state.entity.Song">
+      <point x="0.0" y="-73.5" />
+      <point x="1625.8333333333335" y="149.0" />
+      <point x="1746.7729166666668" y="149.0" />
+      <point x="-80.0" y="62.0" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.PlayerState" target="pl.edu.agh.radioactive.radioplayer.state.MemoryCard">
+      <point x="0.0" y="-189.0" />
+      <point x="1556.0" y="375.0" />
+      <point x="1625.8333333333335" y="375.0" />
+      <point x="0.0" y="73.5" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.RadioPlayer" target="pl.edu.agh.radioactive.radioplayer.mode.CDMode">
+      <point x="-151.5" y="-165.5" />
+      <point x="923.2729166666667" y="803.0" />
+      <point x="405.0" y="803.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.Application" target="pl.edu.agh.radioactive.radioplayer.mode.RadioMode">
+      <point x="-64.5" y="-26.5" />
+      <point x="1247.6479166666668" y="1184.0" />
+      <point x="125.0" y="1184.0" />
+      <point x="0.0" y="61.0" />
+    </edge>
+    <edge source="pl.edu.agh.radioactive.radioplayer.mode.CDMode" target="pl.edu.agh.radioactive.radioplayer.PlayerMode">
+      <point x="0.0" y="-72.5" />
+      <point x="405.0" y="375.0" />
+      <point x="492.5" y="375.0" />
+      <point x="-58.0" y="84.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4361785434612373" x="1028.5" y="628.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
