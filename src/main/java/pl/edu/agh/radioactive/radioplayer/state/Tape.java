@@ -1,4 +1,4 @@
-package pl.edu.agh.radioactive.radioplayer.state;//package pl.edu.agh.radioactive;
+package pl.edu.agh.radioactive.radioplayer.state;
 
 import pl.edu.agh.radioactive.radioplayer.state.entity.TapeSide;
 

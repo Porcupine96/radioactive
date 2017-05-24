@@ -2,14 +2,9 @@ package pl.edu.agh.radioactive.radioplayer.mode;
 
 import pl.edu.agh.radioactive.radioplayer.PlayerMode;
 import pl.edu.agh.radioactive.radioplayer.PlayerState;
-import pl.edu.agh.radioactive.radioplayer.mode.modetype.ModeType;
 import pl.edu.agh.radioactive.radioplayer.state.CD;
 
 public class CDMode extends PlayerMode {
-
-    public CDMode() {
-        super(ModeType.CD);
-    }
 
     @Override
     public void play(PlayerState state) {

@@ -16,18 +16,33 @@ public class PlayerState {
     private Tape tape;
     private double radioFrequency;
 
+
     public PlayerState() {
         this.isPowerOn = false;
         this.isInWaitingMode = true;
         this.radioFrequency = 96.7;
     }
 
-    public boolean isPowerOn() {
-        return isPowerOn;
+    public void turnOn() {
+        if (isPowerOn)
+            System.out.println("[ERROR] radio is already turned on.");
+        else {
+            isPowerOn = true;
+            System.out.println("[INFO] radio player turned on.");
+        }
     }
 
-    public void setPowerOn(boolean powerOn) {
-        isPowerOn = powerOn;
+    public void turnOff() {
+        if (!isPowerOn)
+            System.out.println("[ERROR] radio already turned off.");
+        else {
+            isPowerOn = true;
+            System.out.println("[INFO] radio player turned off.");
+        }
+    }
+
+    public boolean isPowerOn() {
+        return isPowerOn;
     }
 
     void insertCD(CD cd) {
@@ -46,12 +61,8 @@ public class PlayerState {
         return isInWaitingMode;
     }
 
-    public void setWaitingMode(boolean waitingMode) {
+    public void setInWaitingMode(boolean waitingMode) {
         this.isInWaitingMode = waitingMode;
-    }
-
-    public void setRadioFrequency(double radioFrequency) {
-        this.radioFrequency = radioFrequency;
     }
 
     public Optional<CD> getCd() {
@@ -68,6 +79,10 @@ public class PlayerState {
 
     public double getRadioFrequency() {
         return radioFrequency;
+    }
+
+    public void setRadioFrequency(double radioFrequency) {
+        this.radioFrequency = radioFrequency;
     }
 
 }

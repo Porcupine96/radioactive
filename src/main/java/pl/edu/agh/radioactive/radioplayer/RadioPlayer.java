@@ -1,18 +1,14 @@
 package pl.edu.agh.radioactive.radioplayer;
 
 import pl.edu.agh.radioactive.radioplayer.mode.CDMode;
-import pl.edu.agh.radioactive.radioplayer.mode.MemoryCardMode;
-import pl.edu.agh.radioactive.radioplayer.mode.RadioMode;
-import pl.edu.agh.radioactive.radioplayer.mode.TapeMode;
-import pl.edu.agh.radioactive.radioplayer.mode.modetype.ModeType;
 import pl.edu.agh.radioactive.radioplayer.state.CD;
 import pl.edu.agh.radioactive.radioplayer.state.MemoryCard;
 import pl.edu.agh.radioactive.radioplayer.state.Tape;
 
 public class RadioPlayer {
 
-    private PlayerMode mode;
     private final PlayerState state;
+    private PlayerMode mode;
 
     public RadioPlayer() {
         this.state = new PlayerState();
@@ -20,21 +16,11 @@ public class RadioPlayer {
     }
 
     public void turnOn() {
-        if (state.isPowerOn())
-            System.out.println("[ERROR] radio is already turned on.");
-        else {
-            state.setPowerOn(true);
-            System.out.println("[INFO] radio player turned on.");
-        }
+        state.turnOn();
     }
 
     public void turnOff() {
-        if (!state.isPowerOn())
-            System.out.println("[ERROR] radio already turned off.");
-        else {
-            state.setPowerOn(false);
-            System.out.println("[INFO] radio player turned off.");
-        }
+        state.turnOff();
     }
 
     public void insertCD(CD cd) {
@@ -52,73 +38,28 @@ public class RadioPlayer {
         state.insertTape(tape);
     }
 
-    public void playCD() {
-        changeMode(new CDMode());
+
+    public void play() {
         mode.play(state);
     }
 
-    public void playFromMemoryCard() {
-        changeMode(new MemoryCardMode());
-        mode.play(state);
+    public void stop() {
+        mode.stop(state);
     }
 
-    public void playFromTape() {
-        changeMode(new TapeMode());
-        mode.play(state);
-    }
-
-    public void playRadio() {
-        changeMode(new RadioMode());
-        mode.play(state);
-    }
-
-    public void stopCD() {
-        stop(ModeType.CD);
-    }
-
-    public void stopRadio() {
-        stop(ModeType.RADIO);
-    }
-
-    public void stopMemoryCard() {
-        stop(ModeType.MEMORY_CARD);
-    }
-
-    public void stopTape() {
-        stop(ModeType.TAPE);
-    }
-
-    public void goToTheNextSong() {
-        if (this.mode.modeType == ModeType.CD) {
-            ((CDMode) mode).nextSong(state);
-        } else {
-            System.out.println("[INFO] cannot go to the next song in mode " + this.mode.modeType + ".");
-        }
+    public void nextSong() {
+        mode.nextSong(state);
     }
 
     public void changeRadioStation(double frequency) {
-        if (this.mode.modeType == ModeType.RADIO) {
-            System.out.println("[INFO] changing the radio station from " + state.getRadioFrequency() + " to " + frequency + ".");
-            this.state.setRadioFrequency(frequency);
-        } else {
-            System.out.println("[ERROR] cannot change radio station in " + this.mode.modeType + " mode.");
-        }
+        mode.changeRadioStation(state, frequency);
     }
 
-    private void stop(ModeType modeType) {
-        if (this.mode.modeType == modeType) {
-            mode.pause(state);
-        } else {
-            System.out.println("[ERROR] cannot stop " + modeType + " while being in " + this.mode.modeType + " mode.");
-        }
-    }
+    public boolean changeMode(PlayerMode newMode) {
+        if (!mode.canChangeMode(state, newMode)) return false;
 
-    private void changeMode(PlayerMode newMode) {
-        if (mode.modeType == ModeType.TAPE && state.isInWaitingMode()) {
-            System.out.println("[ERROR] cannot change mode without stopping the tape.");
-        } else {
-            this.mode = newMode;
-        }
+        mode = newMode;
+        return true;
     }
 
 }

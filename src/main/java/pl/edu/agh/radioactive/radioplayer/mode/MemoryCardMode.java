@@ -2,14 +2,9 @@ package pl.edu.agh.radioactive.radioplayer.mode;
 
 import pl.edu.agh.radioactive.radioplayer.PlayerMode;
 import pl.edu.agh.radioactive.radioplayer.PlayerState;
-import pl.edu.agh.radioactive.radioplayer.mode.modetype.ModeType;
 import pl.edu.agh.radioactive.radioplayer.state.MemoryCard;
 
 public class MemoryCardMode extends PlayerMode {
-
-    public MemoryCardMode() {
-        super(ModeType.MEMORY_CARD);
-    }
 
     private void withStateValidation(PlayerState state, Runnable action) {
         if (!state.isPowerOn()) {

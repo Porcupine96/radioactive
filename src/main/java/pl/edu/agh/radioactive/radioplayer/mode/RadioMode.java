@@ -2,13 +2,8 @@ package pl.edu.agh.radioactive.radioplayer.mode;
 
 import pl.edu.agh.radioactive.radioplayer.PlayerMode;
 import pl.edu.agh.radioactive.radioplayer.PlayerState;
-import pl.edu.agh.radioactive.radioplayer.mode.modetype.ModeType;
 
 public class RadioMode extends PlayerMode {
-
-    public RadioMode() {
-        super(ModeType.RADIO);
-    }
 
     @Override
     public void play(PlayerState state) {
@@ -27,4 +22,10 @@ public class RadioMode extends PlayerMode {
         System.out.println("[INFO] playing radio station " + frequency + ".");
     }
 
+    @Override
+    public void changeRadioStation(PlayerState state, double frequency) {
+        System.out.println(
+                "[INFO] changing the radio station from " + state.getRadioFrequency() + " to " + frequency + ".");
+        state.setRadioFrequency(frequency);
+    }
 }

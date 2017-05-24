@@ -1,6 +1,7 @@
 package pl.edu.agh.radioactive;
 
 import pl.edu.agh.radioactive.radioplayer.RadioPlayer;
+import pl.edu.agh.radioactive.radioplayer.mode.RadioMode;
 import pl.edu.agh.radioactive.radioplayer.state.CD;
 import pl.edu.agh.radioactive.radioplayer.state.entity.Song;
 
@@ -12,9 +13,13 @@ public class Application {
 
         RadioPlayer radioPlayer = new RadioPlayer();
         radioPlayer.turnOn();
-        radioPlayer.insertCD(new CD("divide", Collections.singletonList(new Song("Galway girl", "Ed Sheeran"))));
-        radioPlayer.playCD();
-        radioPlayer.playRadio();
+        radioPlayer.insertCD(
+                new CD("divide",
+                        Collections.singletonList(new Song("Galway girl", "Ed Sheeran"))));
+        radioPlayer.play();
+        radioPlayer.changeMode(new RadioMode());
+        radioPlayer.play();
+        radioPlayer.nextSong();
 
         radioPlayer.changeRadioStation(123.1);
     }
